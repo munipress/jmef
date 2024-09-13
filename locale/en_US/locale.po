@@ -1,0 +1,55 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-09-013T09:17:52+01:00\n"
+"PO-Revision-Date: 2024-09-13T09:17:52+01:00\n"
+"Language: \n"
+
+msgid "plugins.generic.jmef.displayName" 
+msgstr "JMEF XML Generator"
+
+msgid "plugins.generic.jmef.description" 
+msgstr "The plugin extends the basic metadata for the journal to enable the creation of XML in the Journal Metadata Exchange Format (JMEF). The metadata can be filled in the plugin settings after it is activated. The generated XML address will be [journal URL]/jmef (e.g. https://ojs.yourjournal.com/jmef)"
+
+msgid "plugins.generic.jmef.manager.settings.ownerType" 
+msgstr "Owner type"
+
+msgid "plugins.generic.jmef.manager.settings.ownerType.description" 
+msgstr "Choose your owner type from the list"
+
+msgid "plugins.generic.jmef.manager.settings.journalDoi" 
+msgstr "Journal's DOI"
+
+msgid "plugins.generic.jmef.manager.settings.journalDoi.description" 
+msgstr "Fill in the journal's DOI in the format 10.xxxx/xxxx (e.g. 10.1234/abcdefgh)"
+
+msgid "plugins.generic.jmef.manager.settings.publisherLocation" 
+msgstr "Publisher location"
+
+msgid "plugins.generic.jmef.manager.settings.publisherName" 
+msgstr "You have filled this publisher name in the settings: <strong>{$publisherName}</strong>"
+
+msgid "plugins.generic.jmef.manager.settings.publisherLocation.description" 
+msgstr "Select the country where the publisher is based."
+
+msgid "plugins.generic.jmef.manager.settings.keywords" 
+msgstr "Journal keywords"
+
+msgid "plugins.generic.jmef.manager.settings.keywords.description" 
+msgstr "Enter keywords describing your journal, separated by ;"
+
+msgid "plugins.generic.jmef.manager.settings.peerReviewUsed" 
+msgstr "Check if you are using peer reviewe process."
+
+msgid "plugins.generic.jmef.manager.settings.openAuthorship" 
+msgstr "Check if you have open authorship."
+
+msgid "plugins.generic.jmef.manager.settings.journalPolicy" 
+msgstr "Journal policy"
+
