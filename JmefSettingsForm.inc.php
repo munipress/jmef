@@ -37,19 +37,22 @@ class JmefSettingsForm extends Form {
                 $this->_context = $context;
 
 		parent::__construct($plugin->getTemplateResource('settingsForm.tpl'));
+                $this->addCheck(new FormValidatorPost($this));
+		$this->addCheck(new FormValidatorCSRF($this));
 	}
 
 	/**
 	 * Initialize form data.
 	 */
 	function initData() {
+                $context = $this->_context;
 		$this->_data = array(		
-                    'ownerType' => $this->_context->getSetting('ownerType'),
-                    'journalDOI' => $this->_context->getSetting('journalDOI'),
-                    'publisherLocation' => $this->_context->getSetting('publisherLocation'),
-                    'peerReviewUsed' => $this->_context->getSetting('peerReviewUsed'),
-                    'openAuthorship' => $this->_context->getSetting('openAuthorship'),
-                    'journalKeywords' => $this->_context->getSetting('journalKeywords')
+                    'ownerType' => $context->getSetting('ownerType'),
+                    'journalDOI' => $context->getSetting('journalDOI'),
+                    'publisherLocation' => $context->getSetting('publisherLocation'),
+                    'peerReviewUsed' => $context->getSetting('peerReviewUsed'),
+                    'openAuthorship' => $context->getSetting('openAuthorship'),
+                    'journalKeywords' => $context->getSetting('journalKeywords')
 		);
 	}
 
@@ -57,7 +60,13 @@ class JmefSettingsForm extends Form {
 	 * Assign form data to user-submitted data.
 	 */
 	function readInputData() {
-		$this->readUserVars(array('ownerType','journalDOI','publisherLocation','peerReviewUsed','openAuthorship','journalKeywords'));
+		$this->readUserVars(array( 
+                    'ownerType',
+                    'journalDOI',
+                    'publisherLocation',
+                    'peerReviewUsed',
+                    'openAuthorship',
+                    'journalKeywords'));
 	}
 
         /**
