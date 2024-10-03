@@ -107,9 +107,7 @@ class JmefSettingsForm extends Form {
                 
                 $context = $this->_context;
                 
-                foreach (self::CONFIG_VARS as $configVar => $type) {
-                    $context->_data[$configVar] = $context->getSetting($configVar);
-                    
+                foreach (self::CONFIG_VARS as $configVar => $type) {                    
                     if(key_exists($configVar, self::MULTILINGUAL)){
                         $context->setData($configVar, $this->getData($configVar, null));   
                     } else {
