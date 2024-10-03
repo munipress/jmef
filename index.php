@@ -15,7 +15,7 @@
  * @brief Wrapper for jmef plugin.
  *
  */
-require_once('JmefPlugin.inc.php');
+require_once('JmefPlugin.php');
 
 return new JmefPlugin();
 

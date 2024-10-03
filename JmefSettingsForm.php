@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file JmefSettingsForm.inc.php
+ * @file JmefSettingsForm.php
  *
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
@@ -11,10 +11,12 @@
  * @brief Form for journal managers to modify Jmef plugin settings
  */
 
-// $Id$
+namespace APP\plugins\generic\jmef;
 
-
-import('lib.pkp.classes.form.Form');
+use APP\core\Application;
+use APP\template\TemplateManager;
+use PKP\form\Form;
+use PKP\db\DAORegistry;
 
 class JmefSettingsForm extends Form {
 
@@ -54,8 +56,8 @@ class JmefSettingsForm extends Form {
                 $this->_context = $context;
 
 		parent::__construct($plugin->getTemplateResource('settingsForm.tpl'));
-                $this->addCheck(new FormValidatorPost($this));
-		$this->addCheck(new FormValidatorCSRF($this));
+                $this->addCheck(new \PKP\form\validation\FormValidatorPost($this));
+		$this->addCheck(new \PKP\form\validation\FormValidatorCSRF($this));
 	}
 
 	/**
@@ -107,9 +109,7 @@ class JmefSettingsForm extends Form {
                 
                 $context = $this->_context;
                 
-                foreach (self::CONFIG_VARS as $configVar => $type) {
-                    $context->_data[$configVar] = $context->getSetting($configVar);
-                    
+                foreach (self::CONFIG_VARS as $configVar => $type) {                    
                     if(key_exists($configVar, self::MULTILINGUAL)){
                         $context->setData($configVar, $this->getData($configVar, null));   
                     } else {

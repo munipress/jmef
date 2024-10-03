@@ -12,6 +12,10 @@
  *
  * @brief Produce a Journal Metadata Exchange Format in XML format for submitting to aggregators.
  */
+namespace APP\plugins\generic\jmef;
+
+use APP\core\Handler;
+
 class JmefHandler extends Handler {
 
     /**

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file plugins/generic/jmef/JmefPlugin.inc.php
+ * @file plugins/generic/jmef/JmefPlugin.php
  *
  * Copyright (c) 2014-2020 Simon Fraser University
  * Copyright (c) 2003-2020 John Willinsky
@@ -12,7 +12,15 @@
  *
  * @brief Journal Metadata Exchange Format plugin class
  */
-import('lib.pkp.classes.plugins.GenericPlugin');
+namespace APP\plugins\generic\jmef;
+
+use APP\core\Application;
+use PKP\core\JSONMessage;
+use APP\template\TemplateManager;
+use PKP\linkAction\LinkAction;
+use PKP\linkAction\request\AjaxModal;
+use PKP\plugins\GenericPlugin;
+use PKP\plugins\Hook;
 
 class JmefPlugin extends GenericPlugin {
 
@@ -23,11 +31,11 @@ class JmefPlugin extends GenericPlugin {
         $success = parent::register($category, $path, $mainContextId);
         if ($success && $this->getEnabled($mainContextId)) {
 
-            HookRegistry::register('Schema::get::context', [$this, 'addToSchema']);
+            Hook::add('Schema::get::context', [$this, 'addToSchema']);
             
             // Intercept the LoadHandler hook to present
             // jmef when requested.
-            HookRegistry::register('LoadHandler', array($this, 'callbackHandleContent'));
+            Hook::add('LoadHandler', array($this, 'callbackHandleContent'));
         }
         return $success;
     }
@@ -139,8 +147,6 @@ class JmefPlugin extends GenericPlugin {
         switch ($request->getUserVar('verb')) {
             case 'settings':
                 $context = $request->getContext();
-
-                AppLocale::requireComponents(LOCALE_COMPONENT_APP_COMMON, LOCALE_COMPONENT_PKP_MANAGER);
                 $templateMgr = TemplateManager::getManager($request);
                 $templateMgr->registerPlugin('function', 'plugin_url', array($this, 'smartyPluginUrl'));
 
