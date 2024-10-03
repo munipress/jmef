@@ -14,9 +14,10 @@
 namespace APP\plugins\generic\jmef;
 
 use APP\core\Application;
+use APP\journal\JournalDAO;
 use APP\template\TemplateManager;
-use PKP\form\Form;
 use PKP\db\DAORegistry;
+use PKP\form\Form;
 
 class JmefSettingsForm extends Form {
 
@@ -117,7 +118,6 @@ class JmefSettingsForm extends Form {
                     }
                 }                
                 parent::execute(...$functionArgs);
-                
 		$contextDao = DAORegistry::getDAO('JournalDAO'); /* @var $contextDao JournalDAO */
 		$contextDao->updateObject($context);
 	}
