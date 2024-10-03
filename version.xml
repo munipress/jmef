@@ -13,8 +13,8 @@
 <version>
 	<application>jmef</application>
 	<type>plugins.generic</type>
-	<release>1.0.1.0</release>
-	<date>2024-09-12</date>
+	<release>3.3.0.0</release>
+	<date>2024-10-03</date>
 	<lazy-load>1</lazy-load>
 	<class>JmefPlugin</class>
 </version>

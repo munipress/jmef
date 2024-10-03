@@ -35,37 +35,35 @@ class JmefPlugin extends GenericPlugin {
     /**
      * Extend the context entity's schema with an aditionals properties
      */
-    public function addToSchema(string $hookName, array $args) {
-        $schema = $args[0];/** @var stdClass */
-        $schema->properties->journalKeywords = (object) [
-                    'type' => 'string',
-                    'multilingual' => true,
-                    'validation' => ['nullable']
-        ];
-        $schema->properties->ownerType = (object) [
-                    'type' => 'string',
-                    'multilingual' => false,
-                    'validation' => ['nullable']
-        ];
-        $schema->properties->journalDOI = (object) [
-                    'type' => 'string',
-                    'validation' => ['nullable']
-        ];
-        $schema->properties->publisherLocation = (object) [
-                    'type' => 'string',
-                    'validation' => ['nullable']
-        ];
-        $schema->properties->peerReviewUsed = (object) [
-                    'type' => 'boolean',
-                    'validation' => ['nullable']
-        ];
-        $schema->properties->openAuthorship = (object) [
-                    'type' => 'boolean',
-                    'validation' => ['nullable']
-        ];
-
-
-        return false;
+    public function addToSchema(string $hookName, array $args)
+    {
+      $schema = $args[0]; /** @var stdClass */
+      $schema->properties->journalKeywords = (object) [
+          'type' => 'string',
+          'multilingual' => true,
+          'validation' => ['nullable'],
+      ];
+      $schema->properties->ownerType = (object) [
+          'type' => 'string',
+          'validation' => ['nullable'],
+      ];
+      $schema->properties->journalDOI = (object) [
+          'type' => 'string',
+          'validation' => ['nullable'],
+      ];
+      $schema->properties->publisherLocation = (object) [
+          'type' => 'string',
+          'validation' => ['nullable'],
+      ];
+      $schema->properties->peerReviewUsed = (object) [
+          'type' => 'boolean',
+          'validation' => ['nullable'],
+      ];
+      $schema->properties->openAuthorship = (object) [
+          'type' => 'boolean',
+          'validation' => ['nullable'],
+      ];
+      return false;
     }
 
     /**

@@ -22,7 +22,7 @@
                     {fbvElement type="select" label="plugins.generic.jmef.manager.settings.ownerType.description" name="ownerType" id="ownerType" defaultLabel="" defaultValue="" from=$ownerTypes selected=$ownerType translate="0" size=$fbvStyles.size.MEDIUM}
             {/fbvFormSection}  
             
-            {fbvFormSection for="ownerType" title="plugins.generic.jmef.manager.settings.journalDoi"}
+            {fbvFormSection for="journalDOI" title="plugins.generic.jmef.manager.settings.journalDoi"}
                     {fbvElement type="text" id="journalDOI" value=$journalDOI label="plugins.generic.jmef.manager.settings.journalDoi.description" size=$fbvStyles.size.MEDIUM}     
             {/fbvFormSection} 
             
