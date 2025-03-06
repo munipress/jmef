@@ -25,7 +25,7 @@ Support for OJS 3.2.1
 
 Support for OJS 3.3.0
 
-Examples
+JMEF URL
 ---------------
 URL to JMEF: https://[journal_path]/jmef
 
