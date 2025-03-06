@@ -27,7 +27,7 @@ Support for OJS 3.3.0
 
 Examples
 ---------------
-URL to JMEF: ### https://[journal_path]/jmef
+URL to JMEF: https://[journal_path]/jmef
 
 It could be restful_url or with index.php
 
