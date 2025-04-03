@@ -14,13 +14,12 @@
  */
 namespace APP\plugins\generic\jmef;
 
-use APP\core\Handler;
+use APP\handler\Handler;
 
 class JmefHandler extends Handler {
 
     /**
-     * Generate an XML sitemap for webcrawlers
-     * Creates a sitemap index if in site context, else creates a sitemap
+     * Generate an XML JMEF for webcrawlers
      * @param $args array
      * @param $request Request
      */
@@ -40,7 +39,7 @@ class JmefHandler extends Handler {
      */
     function _createContextJmef($request) {
         $doc = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
-        $context = $request->getJournal();
+        $context = $request->getContext();
 	$baseUrl = $request->getDispatcher()->url(
 				$request,
 				ROUTE_PAGE,

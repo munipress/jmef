@@ -53,3 +53,8 @@ msgstr "Check if you have open authorship."
 msgid "plugins.generic.jmef.manager.settings.journalPolicy" 
 msgstr "Journal policy"
 
+msgid "plugins.generic.jmef.manager.settings.diamondCategory"
+msgstr "Diamond Categories"
+       
+msgid "plugins.generic.jmef.manager.settings.additionalMetadata"
+msgstr "Additional Journal Metadata"

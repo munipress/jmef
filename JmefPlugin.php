@@ -96,8 +96,8 @@ class JmefPlugin extends GenericPlugin {
                 $path .= '/' . implode('/', $ops);
 
             // It is -- attach the jmef handler.
-            define('HANDLER_CLASS', 'JmefHandler');
-            $this->import('JmefHandler');
+            define('HANDLER_CLASS', JmefHandler::class);
+//            $this->import('JmefHandler');
 
             return true;
         }
