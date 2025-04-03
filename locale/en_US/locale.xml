@@ -24,7 +24,9 @@
         <message key='plugins.generic.jmef.manager.settings.publisherLocation.description'>Select the country where the publisher is based.</message>
         <message key='plugins.generic.jmef.manager.settings.keywords'>Journal keywords</message>
         <message key='plugins.generic.jmef.manager.settings.keywords.description'>Enter keywords describing your journal, separated by ;</message>
-        <message key='plugins.generic.jmef.manager.settings.peerReviewUsed'>Check if you are using peer reviewe process.</message>
+        <message key='plugins.generic.jmef.manager.settings.peerReviewUsed'>Check if you are using peer review process.</message>
         <message key='plugins.generic.jmef.manager.settings.openAuthorship'>Check if you have open authorship.</message>
         <message key='plugins.generic.jmef.manager.settings.journalPolicy'>Journal policy</message>
+        <message key="plugins.generic.jmef.manager.settings.diamondCategory">Diamond Categories</message>
+        <message key="plugins.generic.jmef.manager.settings.additionalMetadata">Additional Journal Metadata</message>
 </locale>
