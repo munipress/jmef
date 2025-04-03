@@ -25,7 +25,16 @@ Support for OJS 3.2.1
 
 Support for OJS 3.3.0
 
+JMEF URL
+---------------
+URL to JMEF: https://[journal_path]/jmef
+
+It could be restful_url or with index.php
+
 Examples
 ---------------
 https://cyberpsychology.eu/jmef
+
 https://journals.muni.cz/discourse-and-interaction/jmef
+
+https://journals.muni.cz/index.php/discourse-and-interaction/jmef
