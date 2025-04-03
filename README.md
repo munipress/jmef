@@ -25,6 +25,10 @@ Support for OJS 3.2.1
 
 Support for OJS 3.3.0
 
+### Version 3.4.0.0
+
+Support for OJS 3.4.0
+
 JMEF URL
 ---------------
 URL to JMEF: https://[journal_path]/jmef
