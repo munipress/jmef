@@ -21,6 +21,7 @@ use PKP\linkAction\LinkAction;
 use PKP\linkAction\request\AjaxModal;
 use PKP\plugins\GenericPlugin;
 use PKP\plugins\Hook;
+use APP\plugins\generic\jmef\JmejSettingsForm;
 
 class JmefPlugin extends GenericPlugin {
 
@@ -52,6 +53,14 @@ class JmefPlugin extends GenericPlugin {
           'validation' => ['nullable'],
       ];
       $schema->properties->ownerType = (object) [
+          'type' => 'string',
+          'validation' => ['nullable'],
+      ];
+      $schema->properties->journalDDH = (object) [
+          'type' => 'string',
+          'validation' => ['nullable'],
+      ];
+      $schema->properties->journalDOAJ = (object) [
           'type' => 'string',
           'validation' => ['nullable'],
       ];
@@ -150,7 +159,6 @@ class JmefPlugin extends GenericPlugin {
                 $templateMgr = TemplateManager::getManager($request);
                 $templateMgr->registerPlugin('function', 'plugin_url', array($this, 'smartyPluginUrl'));
 
-                $this->import('JmefSettingsForm');
                 $form = new JmefSettingsForm($this, $context);
                 if ($request->getUserVar('save')) {
                     $form->readInputData();

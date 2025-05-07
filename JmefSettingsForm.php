@@ -23,6 +23,8 @@ class JmefSettingsForm extends Form {
 
         const CONFIG_VARS = array(
 		'ownerType' => 'string',
+                'journalDDH' => 'string',
+                'journalDOAJ' => 'string',
 		'journalDOI' => 'string',
 		'publisherLocation' => 'string',
 		'peerReviewUsed' => 'bool',
@@ -35,7 +37,7 @@ class JmefSettingsForm extends Form {
         );
         
         const OWNER_TYPE = array(
-            'community'
+            'community' => 'community'
         );
         
 	/** @var int */
