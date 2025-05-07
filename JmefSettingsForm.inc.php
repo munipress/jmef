@@ -46,6 +46,7 @@ class JmefSettingsForm extends Form {
 		$this->_data = array(		
                     'ownerType' => $this->_context->getSetting('ownerType'),
                     'journalDDH' => $this->_context->getSetting('journalDDH'),
+                    'journalDOAJ' => $this->_context->getSetting('journalDOAJ'),
                     'journalDOI' => $this->_context->getSetting('journalDOI'),
                     'publisherLocation' => $this->_context->getSetting('publisherLocation'),
                     'peerReviewUsed' => $this->_context->getSetting('peerReviewUsed'),
