@@ -43,10 +43,20 @@ class JmefHandler extends Handler {
 				$context->getPath()
 			);
         $contextId = $context->getId();
-
-        $doc .= "<journal xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n";
+        $ownerType = "";
+        if(trim($context->getData('ownerType'))){
+            $ownerType = " ownerType=\"".trim($context->getData('ownerType'))."\"";
+        }
         
-        /* Journal ID */
+        $doc .= "<journal xmlns:xlink=\"http://www.w3.org/1999/xlink\"". $ownerType .">\n";
+        
+        /* Journal IDs */
+        if($journalDDH = trim($context->getData('journalDDH'))){
+            $doc .= "<journal-id journal-id-type=\"ddh\">" . $journalDDH . "</journal-id>";
+        }
+        if($journalDOAJ = trim($context->getData('journalDOAJ'))){
+            $doc .= "<journal-id journal-id-type=\"doaj\">" . $journalDOAJ . "</journal-id>";
+        }
         if($journalDOI = trim($context->getData('journalDOI'))){
             $doc .= "<journal-id journal-id-type=\"doi\">" . $journalDOI . "</journal-id>";
         }
@@ -63,7 +73,7 @@ class JmefHandler extends Handler {
             $doc .= "\t<issn publication-format=\"print\">" . $printIssn . "</issn>\n";
         }
         if ($onlineIssn = $context->getData('onlineIssn')){
-            $doc .= "\t<issn publication-format=\"online\">" . $onlineIssn . "</issn>\n";
+            $doc .= "\t<issn publication-format=\"electronic\">" . $onlineIssn . "</issn>\n";
         }
         
         /* Publisher */

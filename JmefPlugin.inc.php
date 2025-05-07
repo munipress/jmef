@@ -44,6 +44,18 @@ class JmefPlugin extends GenericPlugin {
           'multilingual' => false,
           'validation' => ['nullable']
       ];
+      $schema->properties->journalDDH = (object) [
+          'type' => 'string',
+          'apiSummary' => true,
+          'multilingual' => false,
+          'validation' => ['nullable']
+      ];
+      $schema->properties->journalDOAJ = (object) [
+          'type' => 'string',
+          'apiSummary' => true,
+          'multilingual' => false,
+          'validation' => ['nullable']
+      ];
       $schema->properties->journalDOI = (object) [
           'type' => 'string',
           'apiSummary' => true,

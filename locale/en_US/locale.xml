@@ -19,6 +19,10 @@
         <message key='plugins.generic.jmef.manager.settings.ownerType.description'>Choose your owner type from the list</message>
         <message key='plugins.generic.jmef.manager.settings.journalDoi'>Journal's DOI</message>
         <message key='plugins.generic.jmef.manager.settings.journalDoi.description'>Fill in the journal's DOI in the format 10.xxxx/xxxx (e.g. 10.1234/abcdefgh)</message>
+        <message key='plugins.generic.jmef.manager.settings.journalDdh'>Journal's DDH ID</message>
+        <message key='plugins.generic.jmef.manager.settings.journalDdh.description'>Fill in the journal's DDH ID number.</message>
+        <message key='plugins.generic.jmef.manager.settings.journalDoaj'>Journal's DOAJ ID</message>
+        <message key='plugins.generic.jmef.manager.settings.journalDoaj.description'>Fill in the journal's DOAJ ID.</message>
         <message key='plugins.generic.jmef.manager.settings.publisherLocation'>Publisher location</message>
         <message key='plugins.generic.jmef.manager.settings.publisherName'><![CDATA[You have filled this publisher name in the settings: <strong>{$publisherName}</strong>]]></message>
         <message key='plugins.generic.jmef.manager.settings.publisherLocation.description'>Select the country where the publisher is based.</message>

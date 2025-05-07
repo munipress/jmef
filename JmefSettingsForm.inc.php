@@ -45,6 +45,7 @@ class JmefSettingsForm extends Form {
 	function initData() {
 		$this->_data = array(		
                     'ownerType' => $this->_context->getSetting('ownerType'),
+                    'journalDDH' => $this->_context->getSetting('journalDDH'),
                     'journalDOI' => $this->_context->getSetting('journalDOI'),
                     'publisherLocation' => $this->_context->getSetting('publisherLocation'),
                     'peerReviewUsed' => $this->_context->getSetting('peerReviewUsed'),
@@ -57,7 +58,7 @@ class JmefSettingsForm extends Form {
 	 * Assign form data to user-submitted data.
 	 */
 	function readInputData() {
-		$this->readUserVars(array('ownerType','journalDOI','publisherLocation','peerReviewUsed','openAuthorship','journalKeywords'));
+		$this->readUserVars(array('ownerType','journalDOI','journalDDH','journalDOAJ','publisherLocation','peerReviewUsed','openAuthorship','journalKeywords'));
 	}
 
         /**
@@ -74,7 +75,7 @@ class JmefSettingsForm extends Form {
 		}
 		asort($countries);
                                 
-                $ownerTypes = array('community');
+                $ownerTypes = array('community' => 'community');
                 
                 $templateMgr->assign('publisherName', $this->_context->getData('publisherInstitution'));  
                 $templateMgr->assign('ownerTypes', $ownerTypes);     
@@ -88,6 +89,8 @@ class JmefSettingsForm extends Form {
 	 */
 	function execute(...$functionArgs) {
                 $this->_context->updateSetting('ownerType', trim($this->getData('ownerType'), "\"\';"), 'string');
+                $this->_context->updateSetting('journalDDH', trim($this->getData('journalDDH'), "\"\';"), 'string');
+                $this->_context->updateSetting('journalDOAJ', trim($this->getData('journalDOAJ'), "\"\';"), 'string');
                 $this->_context->updateSetting('journalDOI', trim($this->getData('journalDOI'), "\"\';"), 'string');
                 $this->_context->updateSetting('publisherLocation', trim($this->getData('publisherLocation'), "\"\';"), 'string');
                 $this->_context->updateSetting('peerReviewUsed', $this->getData('peerReviewUsed'), 'bool');

@@ -38,6 +38,12 @@
             {/fbvFormSection}
     {/fbvFormArea}     
     {fbvFormArea id="jmefSettingsFormAreaOthers" title="plugins.generic.jmef.manager.settings.additionalMetadata"}
+            {fbvFormSection for="journalDDH" title="plugins.generic.jmef.manager.settings.journalDdh"}
+                    {fbvElement type="text" id="journalDDH" value=$journalDDH label="plugins.generic.jmef.manager.settings.journalDdh.description" size=$fbvStyles.size.MEDIUM}     
+            {/fbvFormSection} 
+            {fbvFormSection for="journalDOAJ" title="plugins.generic.jmef.manager.settings.journalDoaj"}
+                    {fbvElement type="text" id="journalDOAJ" value=$journalDOAJ label="plugins.generic.jmef.manager.settings.journalDoaj.description" size=$fbvStyles.size.MEDIUM}     
+            {/fbvFormSection} 
             {fbvFormSection for="journalDOI" title="plugins.generic.jmef.manager.settings.journalDoi"}
                     {fbvElement type="text" id="journalDOI" value=$journalDOI label="plugins.generic.jmef.manager.settings.journalDoi.description" size=$fbvStyles.size.MEDIUM}     
             {/fbvFormSection} 
