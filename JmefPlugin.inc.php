@@ -47,6 +47,14 @@ class JmefPlugin extends GenericPlugin {
           'type' => 'string',
           'validation' => ['nullable'],
       ];
+      $schema->properties->journalDDH = (object) [
+          'type' => 'string',
+          'validation' => ['nullable'],
+      ];
+      $schema->properties->journalDOAJ = (object) [
+          'type' => 'string',
+          'validation' => ['nullable'],
+      ];
       $schema->properties->journalDOI = (object) [
           'type' => 'string',
           'validation' => ['nullable'],

@@ -29,6 +29,18 @@ msgstr "Journal's DOI"
 msgid "plugins.generic.jmef.manager.settings.journalDoi.description" 
 msgstr "Fill in the journal's DOI in the format 10.xxxx/xxxx (e.g. 10.1234/abcdefgh)"
 
+msgid "plugins.generic.jmef.manager.settings.journalDdh" 
+msgstr "Journal's DDH ID"
+
+msgid "plugins.generic.jmef.manager.settings.journalDdh.description" 
+msgstr "Fill in the journal's DDH ID number."
+
+msgid "plugins.generic.jmef.manager.settings.journalDoaj" 
+msgstr "Journal's DOAJ ID"
+
+msgid "plugins.generic.jmef.manager.settings.journalDoaj.description" 
+msgstr "Fill in the journal's DOAJ ID."
+
 msgid "plugins.generic.jmef.manager.settings.publisherLocation" 
 msgstr "Publisher location"
 
