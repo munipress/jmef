@@ -185,7 +185,8 @@ class JmefHandler extends Handler {
                         "\t\t</location>\n";
             }
             $doc .= "\t</publisher>\n";
-            if ($otherOrganisations = trim($context->getData('otherOrganisations'))) {
+        }
+        if ($otherOrganisations = trim($context->getData('otherOrganisations'))) {
                 $otherOrganisationsExploded = explode(";", $otherOrganisations);
                 foreach ($otherOrganisationsExploded as $organisation) {
                     $doc .= "\t<other-organization>\n";
@@ -195,7 +196,6 @@ class JmefHandler extends Handler {
                     $doc .= "\t</other-organization>\n";
                 }                
             }
-        }
         $doc .= "\t</organizations>\n";
         $doc .= "\t<publication-policy>\n";
 
