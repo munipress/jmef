@@ -17,17 +17,29 @@
 <form class="pkp_form" id="jmefSettingsForm" method="post" action="{url router=$smarty.const.ROUTE_COMPONENT op="manage" category="generic" plugin=$pluginName verb="settings" save=true}">
     {csrf}
     {fbvFormArea id="jmefSettingsFormAreaDiamond" title="plugins.generic.jmef.manager.settings.diamondCategory"}
-            {fbvFormSection for="ownerType" title="plugins.generic.jmef.manager.settings.ownerType"}
-                    {fbvElement type="select" label="plugins.generic.jmef.manager.settings.ownerType.description" name="ownerType" id="ownerType" defaultLabel="" defaultValue="" from=$ownerTypes selected=$ownerType translate="0" size=$fbvStyles.size.MEDIUM}
+            {fbvFormSection for="reviewType" title="plugins.generic.jmef.manager.settings.reviewType"}
+                    {fbvElement type="select" label="plugins.generic.jmef.manager.settings.reviewType.description" name="reviewType" id="reviewType" defaultLabel="" defaultValue="" from=$reviewTypes selected=$reviewType translate="0" size=$fbvStyles.size.MEDIUM}
             {/fbvFormSection}  
     
             {fbvFormSection list=true title="plugins.generic.jmef.manager.settings.journalPolicy"}   
-                {if $peerReviewUsed}
+                {if $scholarlyJournal}
                         {assign var="checked" value=true}
                 {else}
                         {assign var="checked" value=false}
                 {/if}
-                {fbvElement type="checkbox" name="peerReviewUsed" id="peerReviewUsed" checked=$checked label="plugins.generic.jmef.manager.settings.peerReviewUsed"}
+                {fbvElement type="checkbox" name="scholarlyJournal" id="scholarlyJournal" checked=$checked label="plugins.generic.jmef.manager.settings.scholarlyJournal"}
+                {if $communityOwned}
+                        {assign var="checked" value=true}
+                {else}
+                        {assign var="checked" value=false}
+                {/if}
+                {fbvElement type="checkbox" name="communityOwned" id="communityOwned" checked=$checked label="plugins.generic.jmef.manager.settings.communityOwned"}
+                {if $noFees}
+                        {assign var="checked" value=true}
+                {else}
+                        {assign var="checked" value=false}
+                {/if}
+                {fbvElement type="checkbox" name="noFees" id="noFees" checked=$checked label="plugins.generic.jmef.manager.settings.noFees"}
             
                 {if $openAuthorship}
                         {assign var="checked" value=true}
@@ -54,8 +66,16 @@
                     {fbvElement type="select" label="plugins.generic.jmef.manager.settings.publisherLocation.description" name="publisherLocation" id="publisherLocation" defaultLabel="" defaultValue="" from=$countries selected=$publisherLocation translate="0" size=$fbvStyles.size.MEDIUM}
             {/fbvFormSection}
             
+            {fbvFormSection for="journalKeywords" title="plugins.generic.jmef.manager.settings.otherOrganisations"}
+                {fbvElement type="text" label="plugins.generic.jmef.manager.settings.otherOrganisations.description" name="otherOrganisations" id="otherOrganisations" value=$otherOrganisations  size=$fbvStyles.size.LARGE}               
+            {/fbvFormSection}
+            
             {fbvFormSection for="journalKeywords" title="plugins.generic.jmef.manager.settings.keywords"}
                 {fbvElement type="text" label="plugins.generic.jmef.manager.settings.keywords.description" multilingual="true" name="journalKeywords" id="journalKeywords" value=$journalKeywords  size=$fbvStyles.size.LARGE}               
+            {/fbvFormSection}
+            
+            {fbvFormSection for="oecdClassification" title="plugins.generic.jmef.manager.settings.oecdClassification"}
+                    {fbvElement type="select" label="plugins.generic.jmef.manager.settings.oecdClassification.description" name="oecdClassification" id="oecdClassification" defaultLabel="" defaultValue="" from=$oecdClassificationsList selected=$oecdClassification translate="0" size=$fbvStyles.size.MEDIUM}
             {/fbvFormSection}
             
     {/fbvFormArea}

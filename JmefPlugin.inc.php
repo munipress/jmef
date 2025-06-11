@@ -16,79 +16,52 @@ import('lib.pkp.classes.plugins.GenericPlugin');
 
 class JmefPlugin extends GenericPlugin {
 
+    //name of metadata => [type, multilingual];
+    var $_additionalMetadata = array('reviewType' => array('string', false),
+        'journalDOI' => array('string', false),
+        'journalDDH' => array('string', false),
+        'journalDOAJ' => array('string', false),
+        'publisherLocation' => array('string', false),
+        'otherOrganisations' => array('string', false),
+        'scholarlyJournal' => array('boolean', false),
+        'communityOwned' => array('boolean', false),
+        'noFees' => array('boolean', false),
+        'openAuthorship' => array('boolean', false),
+        'journalKeywords' => array('string', true),
+        'oecdClassification' => array('string', false),
+    );
+
     /**
      * @copydoc Plugin::register()
      */
     function register($category, $path, $mainContextId = null) {
         $success = parent::register($category, $path, $mainContextId);
         if ($success && $this->getEnabled($mainContextId)) {
-            
+
             HookRegistry::register('Schema::get::context', [$this, 'addToSchema']);
             // Intercept the LoadHandler hook to present
             // jmef when requested.
             HookRegistry::register('LoadHandler', array($this, 'callbackHandleContent'));
-            
         }
         return $success;
     }
 
-     /**
+    /**
      * Extend the context entity's schema with an aditionals properties
      */
-    public function addToSchema(string $hookName, array $args)
-    {
-      $schema = $args[0]; /** @var stdClass */
-      $schema->properties->ownerType = (object) [
-          'type' => 'string',
-          'apiSummary' => true,
-          'multilingual' => false,
-          'validation' => ['nullable']
-      ];
-      $schema->properties->journalDDH = (object) [
-          'type' => 'string',
-          'apiSummary' => true,
-          'multilingual' => false,
-          'validation' => ['nullable']
-      ];
-      $schema->properties->journalDOAJ = (object) [
-          'type' => 'string',
-          'apiSummary' => true,
-          'multilingual' => false,
-          'validation' => ['nullable']
-      ];
-      $schema->properties->journalDOI = (object) [
-          'type' => 'string',
-          'apiSummary' => true,
-          'multilingual' => false,
-          'validation' => ['nullable']
-      ];
-      $schema->properties->publisherLocation = (object) [
-          'type' => 'string',
-          'apiSummary' => true,
-          'multilingual' => false,
-          'validation' => ['nullable']
-      ];
-      $schema->properties->peerReviewUsed = (object) [
-          'type' => 'boolean',
-          'apiSummary' => true,
-          'multilingual' => false,
-          'validation' => ['nullable']
-      ];
-      $schema->properties->openAuthorship = (object) [
-          'type' => 'boolean',
-          'apiSummary' => true,
-          'multilingual' => false,
-          'validation' => ['nullable']
-      ];
-      $schema->properties->journalKeywords = (object) [
-          'type' => 'string',
-          'apiSummary' => true,
-          'multilingual' => true,
-          'validation' => ['nullable']
-      ];
-      
-      return false;
+    public function addToSchema(string $hookName, array $args) {
+        $schema = $args[0];/** @var stdClass */
+        foreach ($this->_additionalMetadata as $metadata => $settings) {
+            $schema->properties->$metadata = (object) [
+                        'type' => $settings[0],
+                        'apiSummary' => true,
+                        'multilingual' => $settings[1],
+                        'validation' => ['nullable']
+            ];
+        }
+        return false;
     }
+
     /**
      * Declare the handler function to process the actual page 
      * @param $hookName string The name of the invoked hook
@@ -102,7 +75,7 @@ class JmefPlugin extends GenericPlugin {
         $page = & $args[0];
         $op = & $args[1];
 
-        if ($page == 'jmef'){
+        if ($page == 'jmef') {
             // Construct a path to look for
             $path = $page;
             if ($op !== 'index')
@@ -183,4 +156,5 @@ class JmefPlugin extends GenericPlugin {
         }
         return parent::manage($args, $request);
     }
+
 }
