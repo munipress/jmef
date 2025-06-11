@@ -173,7 +173,7 @@ class JmefHandler extends Handler {
         }
 
         /* Publisher and other organisations */
-
+        $doc .= "\t<organizations>\n";
         if ($publisher = $context->getData('publisherInstitution')) {
             $doc .= "\t<publisher>\n" .
                     "\t\t<publisher-name>" . $publisher . "</publisher-name>\n";
@@ -196,6 +196,7 @@ class JmefHandler extends Handler {
                 }                
             }
         }
+        $doc .= "\t</organizations>\n";
         $doc .= "\t<publication-policy>\n";
 
         if ($reviewType = $context->getData('reviewType')) {
