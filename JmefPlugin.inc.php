@@ -16,6 +16,21 @@ import('lib.pkp.classes.plugins.GenericPlugin');
 
 class JmefPlugin extends GenericPlugin {
 
+    //name of metadata => [type, multilingual];
+    var $_additionalMetadata = array('reviewType' => array('string', false),
+        'journalDOI' => array('string', false),
+        'journalDDH' => array('string', false),
+        'journalDOAJ' => array('string', false),
+        'publisherLocation' => array('string', false),
+        'otherOrganisations' => array('string', false),
+        'scholarlyJournal' => array('boolean', false),
+        'communityOwned' => array('boolean', false),
+        'noFees' => array('boolean', false),
+        'openAuthorship' => array('boolean', false),
+        'journalKeywords' => array('string', true),
+        'oecdClassification' => array('string', false),
+    );
+
     /**
      * @copydoc Plugin::register()
      */
@@ -24,7 +39,6 @@ class JmefPlugin extends GenericPlugin {
         if ($success && $this->getEnabled($mainContextId)) {
 
             HookRegistry::register('Schema::get::context', [$this, 'addToSchema']);
-            
             // Intercept the LoadHandler hook to present
             // jmef when requested.
             HookRegistry::register('LoadHandler', array($this, 'callbackHandleContent'));
@@ -35,43 +49,17 @@ class JmefPlugin extends GenericPlugin {
     /**
      * Extend the context entity's schema with an aditionals properties
      */
-    public function addToSchema(string $hookName, array $args)
-    {
-      $schema = $args[0]; /** @var stdClass */
-      $schema->properties->journalKeywords = (object) [
-          'type' => 'string',
-          'multilingual' => true,
-          'validation' => ['nullable'],
-      ];
-      $schema->properties->ownerType = (object) [
-          'type' => 'string',
-          'validation' => ['nullable'],
-      ];
-      $schema->properties->journalDDH = (object) [
-          'type' => 'string',
-          'validation' => ['nullable'],
-      ];
-      $schema->properties->journalDOAJ = (object) [
-          'type' => 'string',
-          'validation' => ['nullable'],
-      ];
-      $schema->properties->journalDOI = (object) [
-          'type' => 'string',
-          'validation' => ['nullable'],
-      ];
-      $schema->properties->publisherLocation = (object) [
-          'type' => 'string',
-          'validation' => ['nullable'],
-      ];
-      $schema->properties->peerReviewUsed = (object) [
-          'type' => 'boolean',
-          'validation' => ['nullable'],
-      ];
-      $schema->properties->openAuthorship = (object) [
-          'type' => 'boolean',
-          'validation' => ['nullable'],
-      ];
-      return false;
+    public function addToSchema(string $hookName, array $args) {
+        $schema = $args[0];/** @var stdClass */
+        foreach ($this->_additionalMetadata as $metadata => $settings) {
+            $schema->properties->$metadata = (object) [
+                        'type' => $settings[0],
+                        'apiSummary' => true,
+                        'multilingual' => $settings[1],
+                        'validation' => ['nullable']
+            ];
+        }
+        return false;
     }
 
     /**
