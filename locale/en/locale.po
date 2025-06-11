@@ -1,15 +1,6 @@
+#
 msgid ""
-msgstr ""
-"Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-09-013T09:17:52+01:00\n"
-"PO-Revision-Date: 2024-09-13T09:17:52+01:00\n"
-"Language: \n"
+msgstr "Language: en\n"
 
 msgid "plugins.generic.jmef.displayName" 
 msgstr "JMEF XML Generator"
@@ -17,11 +8,6 @@ msgstr "JMEF XML Generator"
 msgid "plugins.generic.jmef.description" 
 msgstr "The plugin extends the basic metadata for the journal to enable the creation of XML in the Journal Metadata Exchange Format (JMEF). The metadata can be filled in the plugin settings after it is activated. The generated XML address will be [journal URL]/jmef (e.g. https://ojs.yourjournal.com/jmef)"
 
-msgid "plugins.generic.jmef.manager.settings.ownerType" 
-msgstr "Owner type"
-
-msgid "plugins.generic.jmef.manager.settings.ownerType.description" 
-msgstr "Choose your owner type from the list"
 
 msgid "plugins.generic.jmef.manager.settings.journalDoi" 
 msgstr "Journal's DOI"
@@ -70,4 +56,32 @@ msgstr "Diamond Categories"
        
 msgid "plugins.generic.jmef.manager.settings.additionalMetadata"
 msgstr "Additional Journal Metadata"
+
+msgid "plugins.generic.jmef.manager.settings.otherOrganisations"
+msgstr "Other organisations co-publishing the journal"
+
+msgid "plugins.generic.jmef.manager.settings.otherOrganisations.description"
+msgstr "Enter organisations connected to your journal, separated by ;"
+        
+msgid "plugins.generic.jmef.manager.settings.oecdClassification"
+msgstr "OECD 2007 Classification"
+
+msgid "plugins.generic.jmef.manager.settings.oecdClassification.description"
+msgstr "Choose your journal's classification from the list."
+
+msgid "plugins.generic.jmef.manager.settings.scholarlyJournal"
+msgstr "Check if your journal could be classified as Scholarly journal."
+
+msgid "plugins.generic.jmef.manager.settings.communityOwned"
+msgstr "Check if your journal is community owned."
+
+msgid "plugins.generic.jmef.manager.settings.noFees"
+msgstr "Check if your journal has no APCs and any kind of subscriptions to it's content."
+
+msgid "plugins.generic.jmef.manager.settings.reviewType"
+msgstr "Review type"
+
+msgid "plugins.generic.jmef.manager.settings.reviewType.description"
+msgstr "Choose type of your review process from the list"
+
 
