@@ -246,7 +246,7 @@ class JmefHandler extends Handler {
         if ($oecdClassification = $context->getData('oecdClassification')) {
             $doc .= "\t<classifications>" .
                     "\t\t<classification type=\"oecd-2007\">" .
-                    "\t\t\t<class code=\"" . $oecdClassification . "\" value=\"" . $this->_oecdClassification[$oecdClassification] . "\" /> " .
+                    "\t\t\t<class code=\"" . $oecdClassification . "\" value=\"" . $this->_oecdClassificationsList[$oecdClassification] . "\" /> " .
                     "\t\t</classification>" .
                     "\t</classifications>";
         }
