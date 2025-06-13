@@ -16,24 +16,14 @@
 </script>
 <form class="pkp_form" id="jmefSettingsForm" method="post" action="{url router=$smarty.const.ROUTE_COMPONENT op="manage" category="generic" plugin=$pluginName verb="settings" save=true}">
     {csrf}
-    {fbvFormArea id="jmefSettingsFormAreaDiamond" title="plugins.generic.jmef.manager.settings.diamondCategory"}
-            {fbvFormSection for="reviewType" title="plugins.generic.jmef.manager.settings.reviewType"}
-                    {fbvElement type="select" label="plugins.generic.jmef.manager.settings.reviewType.description" name="reviewType" id="reviewType" defaultLabel="" defaultValue="" from=$reviewTypes selected=$reviewType translate="0" size=$fbvStyles.size.MEDIUM}
-            {/fbvFormSection}  
-    
-            {fbvFormSection list=true title="plugins.generic.jmef.manager.settings.journalPolicy"}   
+    {fbvFormArea id="jmefSettingsFormAreaDiamond" title="plugins.generic.jmef.manager.settings.diamondCategory"}    
+            {fbvFormSection list=true}   
                 {if $scholarlyJournal}
                         {assign var="checked" value=true}
                 {else}
                         {assign var="checked" value=false}
                 {/if}
-                {fbvElement type="checkbox" name="scholarlyJournal" id="scholarlyJournal" checked=$checked label="plugins.generic.jmef.manager.settings.scholarlyJournal"}
-                {if $communityOwned}
-                        {assign var="checked" value=true}
-                {else}
-                        {assign var="checked" value=false}
-                {/if}
-                {fbvElement type="checkbox" name="communityOwned" id="communityOwned" checked=$checked label="plugins.generic.jmef.manager.settings.communityOwned"}
+                {fbvElement type="checkbox" name="scholarlyJournal" id="scholarlyJournal" checked=$checked label="plugins.generic.jmef.manager.settings.scholarlyJournal"}                
                 {if $noFees}
                         {assign var="checked" value=true}
                 {else}
@@ -47,6 +37,12 @@
                         {assign var="checked" value=false}
                 {/if}                
                 {fbvElement type="checkbox" name="openAuthorship" id="openAuthorship" checked=$checked label="plugins.generic.jmef.manager.settings.openAuthorship"} 
+                {if $communityOwned}
+                        {assign var="checked" value=true}
+                {else}
+                        {assign var="checked" value=false}
+                {/if}
+                {fbvElement type="checkbox" name="communityOwned" id="communityOwned" checked=$checked label="plugins.generic.jmef.manager.settings.communityOwned"}
             {/fbvFormSection}
     {/fbvFormArea}     
     {fbvFormArea id="jmefSettingsFormAreaOthers" title="plugins.generic.jmef.manager.settings.additionalMetadata"}
@@ -59,7 +55,9 @@
             {fbvFormSection for="journalDOI" title="plugins.generic.jmef.manager.settings.journalDoi"}
                     {fbvElement type="text" id="journalDOI" value=$journalDOI label="plugins.generic.jmef.manager.settings.journalDoi.description" size=$fbvStyles.size.MEDIUM}     
             {/fbvFormSection} 
-            
+            {fbvFormSection for="reviewType" title="plugins.generic.jmef.manager.settings.reviewType"}
+                    {fbvElement type="select" label="plugins.generic.jmef.manager.settings.reviewType.description" name="reviewType" id="reviewType" defaultLabel="" defaultValue="" from=$reviewTypes selected=$reviewType translate="0" size=$fbvStyles.size.MEDIUM}
+            {/fbvFormSection}  
             
             {fbvFormSection for="publisherLocation" title="plugins.generic.jmef.manager.settings.publisherLocation"}
             {translate key="plugins.generic.jmef.manager.settings.publisherName" publisherName=$publisherName}
