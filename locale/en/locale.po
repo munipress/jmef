@@ -19,13 +19,13 @@ msgid "plugins.generic.jmef.manager.settings.journalDdh"
 msgstr "Journal's DDH ID"
 
 msgid "plugins.generic.jmef.manager.settings.journalDdh.description" 
-msgstr "Fill in the journal's DDH ID number."
+msgstr "If the journal is in DDH, please enter the DDH ID number."
 
 msgid "plugins.generic.jmef.manager.settings.journalDoaj" 
 msgstr "Journal's DOAJ ID"
 
 msgid "plugins.generic.jmef.manager.settings.journalDoaj.description" 
-msgstr "Fill in the journal's DOAJ ID."
+msgstr "If the journal is in DOAJ, please enter the DOAJ ID number."
 
 msgid "plugins.generic.jmef.manager.settings.publisherLocation" 
 msgstr "Publisher location"
@@ -40,7 +40,7 @@ msgid "plugins.generic.jmef.manager.settings.keywords"
 msgstr "Journal keywords"
 
 msgid "plugins.generic.jmef.manager.settings.keywords.description" 
-msgstr "Enter keywords describing your journal, separated by ;"
+msgstr "Enter keywords describing your journal, <strong>separated by ;</strong>"
 
 msgid "plugins.generic.jmef.manager.settings.peerReviewUsed" 
 msgstr "Check if you are using peer reviewe process."
@@ -58,10 +58,10 @@ msgid "plugins.generic.jmef.manager.settings.additionalMetadata"
 msgstr "Additional Journal Metadata"
 
 msgid "plugins.generic.jmef.manager.settings.otherOrganisations"
-msgstr "Other organisations co-publishing the journal"
+msgstr "Other organisations"
 
 msgid "plugins.generic.jmef.manager.settings.otherOrganisations.description"
-msgstr "Enter organisations connected to your journal, separated by ;"
+msgstr "The owner of the journal, if it is different from the publisher, or other organisations associated with the journal, <strong>separated by ;</strong>"
         
 msgid "plugins.generic.jmef.manager.settings.oecdClassification"
 msgstr "OECD 2007 Classification"
@@ -83,5 +83,3 @@ msgstr "Review type"
 
 msgid "plugins.generic.jmef.manager.settings.reviewType.description"
 msgstr "Choose type of your review process from the list"
-
-
