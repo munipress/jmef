@@ -177,7 +177,7 @@ class JmefHandler extends Handler {
         $doc .= "\t<organizations>\n";
         if ($publisher = $context->getData('publisherInstitution')) {
             $doc .= "\t<publisher>\n" .
-                    "\t\t<publisher-name>" . $publisher . "</publisher-name>\n";
+                    "\t\t<name>" . $publisher . "</name>\n";
             if ($countryCode = $context->getData('publisherLocation')) {
                 $isoCodes = new \Sokil\IsoCodes\IsoCodesFactory();
                 $country = $isoCodes->getCountries()->getByAlpha2($countryCode);
