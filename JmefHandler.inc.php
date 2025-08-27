@@ -14,6 +14,59 @@
  */
 class JmefHandler extends Handler {
 
+     var $_languages = array(
+        "ar_IQ" => array("Arabic (Iraq)", "ARA", "AR"),
+        "bs_BA" => array("Bosnian", "BOS", "BS"),
+        "ca_ES" => array("Catalan", "CAT", "CA"),
+        "cs_CZ" => array("Czech", "CES", "CS"),
+        "da_DK" => array("Danish", "DAN", "DA"),
+        "de_DE" => array("German", "DEU", "DE"),
+        "el_GR" => array("Greek", "ELL", "EL"),
+        "en_US" => array("English", "ENG", "EN"),
+        "es_ES" => array("Spanish", "SPA", "ES"),
+        "eu_ES" => array("Basque", "EUS", "EU"),
+        "fa_IR" => array("Persian", "FAS", "FA"),
+        "fi_FI" => array("Finnish", "FIN", "FI"),
+        "fr_CA" => array("French (Canada)", "FRA", "FR"),
+        "fr_FR" => array("French", "FRA", "FR"),
+        "gd_GB" => array("Scottish Gaelic", "GLA", "GD"),
+        "he_IL" => array("Hebrew", "HEB", "HE"),
+        "hi_IN" => array("Hindi", "HIN", "HI"),
+        "hr_HR" => array("Croatian", "HRV", "HR"),
+        "hu_HU" => array("Hungarian", "HUN", "HU"),
+        "hy_AM" => array("Armenian", "HYE", "HY"),
+        "id_ID" => array("Indonesian", "IND", "ID"),
+        "is_IS" => array("Icelandic", "ISL", "IS"),
+        "it_IT" => array("Italian", "ITA", "IT"),
+        "ja_JP" => array("Japanese", "JPN", "JA"),
+        "ka_GE" => array("Georgian", "KAT", "KA"),
+        "kk_KZ" => array("Kazakh", "KAZ", "KK"),
+        "ko_KR" => array("Korean", "KOR", "KO"),
+        "ku_IQ" => array("Kurdish", "KUR", "KU"),
+        "mk_MK" => array("Macedonian", "MKD", "MK"),
+        "mn_MN" => array("Mongolian", "MON", "MN"),
+        "nb_NO" => array("Norwegian Bokmal", "NOB", "NB"),
+        "nl_NL" => array("Dutch", "NLD", "NL"),
+        "pl_PL" => array("Polish", "POL", "PL"),
+        "pt_BR" => array("Portuguese (Brazil)", "POR", "PT"),
+        "pt_PT" => array("Portuguese", "POR", "PT"),
+        "ro_RO" => array("Romanian", "RON", "RO"),
+        "ru_RU" => array("Russian", "RUS", "RU"),
+        "sk_SK" => array("Slovak", "SLK", "SK"),
+        "sl_SI" => array("Slovenian", "SLV", "SL"),
+        "sr_RS@cyrillic" => array("Serbian (Cyrillic)", "SRP", "SR"),
+        "sr_RS@latin" => array("Serbian (Latin)", "SRP", "SR"),
+        "sv_SE" => array("Swedish", "SWE", "SV"),
+        "tr_TR" => array("Turkish", "TUR", "TR"),
+        "uk_UA" => array("Ukrainian", "UKR", "UK"),
+        "ur_PK" => array("Urdu", "URD", "UR"),
+        "uz_UZ@cyrillic" => array("Uzbek (Cyrillic)", "UZB", "UZ"),
+        "uz_UZ@latin" => array("Uzbek (Latin)", "UZB", "UZ"),
+        "vi_VN" => array("Vietnamese", "VIE", "VI"),
+        "zh_CN" => array("Chinese (Simplified)", "ZHO", "ZH"),
+        "zh_TW" => array("Chinese (Traditional)", "ZHO", "ZH")
+    );
+    
     var $_oecdClassificationsList = array('1' => 'Natural Sciences',
         '1.01' => 'Natural sciences - Mathematics',
         '1.02' => 'Natural sciences - Computer and information sciences',
@@ -207,15 +260,16 @@ class JmefHandler extends Handler {
         if ($allLanguages = $context->getSupportedSubmissionLocales()) {
             $doc .= "\t\t<languages>\n";
             foreach ($allLanguages AS $code) {
-                $languages = $this->getLanguage($code);
-                $doc .= "\t\t\t<language ";
-                if (sizeof($languages) >= 2 && $languages[1]) {
-                    $doc .= "iso2=\"" . $languages[1] . "\" ";
+                if($languages = $this->getLanguage($code)){
+                  $doc .= "\t\t\t<language ";
+                  if (sizeof($languages) >= 2 && $languages[1]) {
+                      $doc .= "iso2=\"" . $languages[1] . "\" ";
+                  }
+                  if (sizeof($languages) == 3 && $languages[2]) {
+                      $doc .= "iso1=\"" . $languages[2] . "\"";
+                  }
+                  $doc .= ">" . $languages[0] . "</language>\n";
                 }
-                if (sizeof($languages) == 3 && $languages[2]) {
-                    $doc .= "iso1=\"" . $languages[2] . "\"";
-                }
-                $doc .= ">" . $languages[0] . "</language>\n";
             }
             $doc .= "\t\t</languages>\n";
         }
@@ -258,42 +312,7 @@ class JmefHandler extends Handler {
     function getLanguage($string) {
         $key = trim($string);
 
-        $languages = array(
-            "ca_ES" => array("Catalan", "CAT", "CA"),
-            "da_DK" => array("Danish", "DAN", "DA"),
-            "de_DE" => array("German", "GER", "DE"),
-            "el_GR" => array("Greek", "ELL", "EL"),
-            "en_US" => array("English", "ENG", "EN"),
-            "es_AR" => array("Spanish (Argentina)"),
-            "es_ES" => array("Spanish", "SPA", "ES"),
-            "eu_ES" => array("Basque (Spain)"),
-            "fr_CA" => array("French (Canada)"),
-            "it_IT" => array("Italian", "ITA", "IT"),
-            "nl_NL" => array("Dutch", "NLD", "NL"),
-            "pt_BR" => array("Portuguese (Brazil)"),
-            "tr_TR" => array("Turkish", "TUR", "TR"),
-            "uk_UA" => array("Ukrainian", "UKR", "UK"),
-            "zh_CN" => array("Chinese", "ZHO", "ZH"),
-            "cs_CZ" => array("Czech", "CES", "CS"),
-            "fa_IR" => array("Persian", "FAS", "FA"),
-            "gl_ES" => array("Galician (Spain)", "GLG", "GL"),
-            "hr_HR" => array("Croatian", "HRV", "HR"),
-            "id_ID" => array("Indonesian", "ID", "IND"),
-            "ja_JP" => array("Japanese", "JAP", "JA"),
-            "mk_MK" => array("Macedonian", "MKD", "MK"),
-            "ml_IN" => array("Malayalam", "MAL", "ML"),
-            "no_NO" => array("Norwegian", "NOR", "NO"),
-            "pl_PL" => array("Polish", "POL", "PL"),
-            "pt_PT" => array("Portuguese", "POR", "PT"),
-            "ro_RO" => array("Romanian", "RON", "RO"),
-            "ru_RU" => array("Russian", "RUS", "RU"),
-            "sr_SR" => array("Serbian", "SRP", "SR"),
-            "sv_SE" => array("Swedish", "SWE", "SV"),
-            "vi_VN" => array("Vietnamese", "VIE", "VI"),
-            "zh_TW" => array("Chinese - TAIWAN"),
-            "sk_SK" => array("Slovak", "SLK", "SK"),
-            "fr_FR" => array("French", "FRA", "FR")
-        );
+        $languages = $this->_languages;
         if (key_exists($key, $languages)) {
             return $languages[$key];
         } else {
