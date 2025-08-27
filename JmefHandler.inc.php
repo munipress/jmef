@@ -64,7 +64,9 @@ class JmefHandler extends Handler {
         "uz_UZ@latin" => array("Uzbek (Latin)", "UZB", "UZ"),
         "vi_VN" => array("Vietnamese", "VIE", "VI"),
         "zh_CN" => array("Chinese (Simplified)", "ZHO", "ZH"),
-        "zh_TW" => array("Chinese (Traditional)", "ZHO", "ZH")
+        "zh_TW" => array("Chinese (Traditional)", "ZHO", "ZH"),
+        "dsb" => array("Lower Sorbian", "DSB", ""),
+        "hsb" => array("Upper Sorbian", "HSB", "")
     );
     
     var $_oecdClassificationsList = array('1' => 'Natural Sciences',
