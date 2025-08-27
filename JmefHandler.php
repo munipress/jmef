@@ -18,6 +18,80 @@ namespace APP\plugins\generic\jmef;
 use APP\handler\Handler;
 
 class JmefHandler extends Handler {
+    var $_languages = array(
+        "ar" => array("Arabic", "ARA", "AR"),
+        "az" => array("Azerbaijani", "AZE", "AZ"),
+        "be@cyrillic"=> array("Belarusian (Cyrillic)", "BEL", "BE"),
+        "bg" => array("Bulgarian", "BUL", "BG"),
+        "bs" => array("Bosnian", "BOS", "BS"),
+        "ca" => array("Catalan", "CAT", "CA"),
+        "ckb" => array("Kurdish (Central)", "KUR", "KU"),
+        "cnr" => array("Montenegrin", "CNR", ""),
+        "cs" => array("Czech", "CES", "CS"),
+        "da" => array("Danish", "DAN", "DA"),
+        "de" => array("German", "DEU", "DE"),
+        "dsb" => array("Lower Sorbian", "DSB", ""),
+        "el" => array("Greek", "ELL", "EL"),
+        "en" => array("English", "ENG", "EN"),
+        "eo" => array("Esperanto", "EPO", "EO"),
+        "es" => array("Spanish", "SPA", "ES"),
+        "es_MX" => array("Spanish (Mexico)", "SPA", "ES"),
+        "eu" => array("Basque", "EUS", "EU"),
+        "fa" => array("Persian", "FAS", "FA"),
+        "fa_AF" => array("Persian (Afghanistan)", "FAS", "FA"),
+        "fi" => array("Finnish", "FIN", "FI"),
+        "fr_CA" => array("French (Canada)", "FRA", "FR"),
+        "fr_FR" => array("French", "FRA", "FR"),
+        "gd" => array("Scottish Gaelic", "GLA", "GD"),
+        "gl" => array("Galician", "GLG", "GL"),
+        "he" => array("Hebrew", "HEB", "HE"),
+        "hi" => array("Hindi", "HIN", "HI"),
+        "hr" => array("Croatian", "HRV", "HR"),
+        "hsb" => array("Upper Sorbian", "HSB", ""),
+        "hu" => array("Hungarian", "HUN", "HU"),
+        "hy" => array("Armenian", "HYE", "HY"),
+        "id" => array("Indonesian", "IND", "ID"),
+        "is" => array("Icelandic", "ISL", "IS"),
+        "it" => array("Italian", "ITA", "IT"),
+        "ja" => array("Japanese", "JPN", "JA"),
+        "ka" => array("Georgian", "KAT", "KA"),
+        "kk" => array("Kazakh", "KAZ", "KK"),
+        "ko" => array("Korean", "KOR", "KO"),
+        "ky" => array("Kyrgyz", "KIR", "KY"),
+        "lt" => array("Lithuanian", "LIT", "LT"),
+        "lv" => array("Latvian", "LAV", "LV"),
+        "mk" => array("Macedonian", "MKD", "MK"),
+        "mn" => array("Mongolian", "MON", "MN"),
+        "mr" => array("Marathi", "MAR", "MR"),
+        "ms" => array("Malay", "MSA", "MS"),
+        "nb" => array("Norwegian Bokmål", "NOB", "NB"),
+        "nl" => array("Dutch", "NLD", "NL"),
+        "pl" => array("Polish", "POL", "PL"),
+        "ps" => array("Pashto", "PUS", "PS"),
+        "pt_BR" => array("Portuguese (Brazil)", "POR", "PT"),
+        "pt_PT" => array("Portuguese", "POR", "PT"),
+        "ro" => array("Romanian", "RON", "RO"),
+        "ru" => array("Russian", "RUS", "RU"),
+        "se" => array("Northern Sami", "SME", "SE"),
+        "si" => array("Sinhala", "SIN", "SI"),
+        "sid" => array("Sidamo", "SID", ""),
+        "sk" => array("Slovak", "SLK", "SK"),
+        "sl" => array("Slovenian", "SLV", "SL"),
+        "sq" => array("Albanian", "SQI", "SQ"),
+        "sr@cyrillic"=> array("Serbian (Cyrillic)", "SRP", "SR"),
+        "sr@latin"  => array("Serbian (Latin)", "SRP", "SR"),
+        "sv" => array("Swedish", "SWE", "SV"),
+        "th" => array("Thai", "THA", "TH"),
+        "tr" => array("Turkish", "TUR", "TR"),
+        "uk" => array("Ukrainian", "UKR", "UK"),
+        "und" => array("Undetermined", "UND", ""),
+        "ur" => array("Urdu", "URD", "UR"),
+        "uz@cyrillic"=> array("Uzbek (Cyrillic)", "UZB", "UZ"),
+        "uz@latin"  => array("Uzbek (Latin)", "UZB", "UZ"),
+        "vi" => array("Vietnamese", "VIE", "VI"),
+        "zh_CN" => array("Chinese (Simplified)", "ZHO", "ZH"),
+        "zh_Hant" => array("Chinese (Traditional)", "ZHO", "ZH")
+    );
 
     var $_oecdClassificationsList = array('1' => 'Natural Sciences',
         '1.01' => 'Natural sciences - Mathematics',
@@ -212,15 +286,16 @@ class JmefHandler extends Handler {
         if ($allLanguages = $context->getSupportedSubmissionLocales()) {
             $doc .= "\t\t<languages>\n";
             foreach ($allLanguages AS $code) {
-                $languages = $this->getLanguage($code);
-                $doc .= "\t\t\t<language ";
-                if (sizeof($languages) >= 2 && $languages[1]) {
-                    $doc .= "iso2=\"" . $languages[1] . "\" ";
+                if($languages = $this->getLanguage($code)){
+                    $doc .= "\t\t\t<language ";
+                    if (sizeof($languages) >= 2 && $languages[1]) {
+                        $doc .= "iso2=\"" . $languages[1] . "\" ";
+                    }
+                    if (sizeof($languages) == 3 && $languages[2]) {
+                        $doc .= "iso1=\"" . $languages[2] . "\"";
+                    }
+                    $doc .= ">" . $languages[0] . "</language>\n";
                 }
-                if (sizeof($languages) == 3 && $languages[2]) {
-                    $doc .= "iso1=\"" . $languages[2] . "\"";
-                }
-                $doc .= ">" . $languages[0] . "</language>\n";
             }
             $doc .= "\t\t</languages>\n";
         }
@@ -263,39 +338,7 @@ class JmefHandler extends Handler {
     function getLanguage($string) {
         $key = trim($string);
 
-        $languages = array(
-            "ca" => array("Catalan", "CAT", "CA"),
-            "da" => array("Danish", "DAN", "DA"),
-            "de" => array("German", "GER", "DE"),
-            "el" => array("Greek", "ELL", "EL"),
-            "en" => array("English", "ENG", "EN"),
-            "es" => array("Spanish", "SPA", "ES"),
-            "eu" => array("Basque (Spain)"),
-            "fr_CA" => array("French (Canada)"),
-            "it" => array("Italian", "ITA", "IT"),
-            "nl" => array("Dutch", "NLD", "NL"),
-            "pt_BR" => array("Portuguese (Brazil)"),
-            "tr" => array("Turkish", "TUR", "TR"),
-            "uk" => array("Ukrainian", "UKR", "UK"),
-            "zh_CN" => array("Chinese", "ZHO", "ZH"),
-            "cs" => array("Czech", "CES", "CS"),
-            "fa" => array("Persian", "FAS", "FA"),
-            "gl" => array("Galician (Spain)", "GLG", "GL"),
-            "hr" => array("Croatian", "HRV", "HR"),
-            "id" => array("Indonesian", "ID", "IND"),
-            "ja" => array("Japanese", "JAP", "JA"),
-            "mk" => array("Macedonian", "MKD", "MK"),
-            "nb" => array("Norwegian", "NOR", "NO"),
-            "pl" => array("Polish", "POL", "PL"),
-            "pt_PT" => array("Portuguese", "POR", "PT"),
-            "ro" => array("Romanian", "RON", "RO"),
-            "ru" => array("Russian", "RUS", "RU"),
-            "sr" => array("Serbian", "SRP", "SR"),
-            "sv" => array("Swedish", "SWE", "SV"),
-            "vi" => array("Vietnamese", "VIE", "VI"),
-            "sk" => array("Slovak", "SLK", "SK"),
-            "fr_FR" => array("French", "FRA", "FR")
-        );
+        $languages = $this->_languages;
         if (key_exists($key, $languages)) {
             return $languages[$key];
         } else {
