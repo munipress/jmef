@@ -28,7 +28,7 @@
         <message key='plugins.generic.jmef.manager.settings.publisherLocation.description'>Select the country where the publisher is based.</message>
         <message key='plugins.generic.jmef.manager.settings.keywords'>Journal keywords</message>
         <message key='plugins.generic.jmef.manager.settings.keywords.description'><![CDATA[Enter keywords describing your journal, <strong>separated by ;</strong>]]></message>
-        <message key='plugins.generic.jmef.manager.settings.openAuthorship'>Check if you have open authorship.</message>
+        <message key='plugins.generic.jmef.manager.settings.openAuthorship'><![CDATA[Check if you have open authorship. <br /><em>(self-declaration text defined by DDH regarding openness to all authors will appear at the end of the <strong>About</strong> page.)</em>]]></message>
         <message key='plugins.generic.jmef.manager.settings.journalPolicy'>Journal policy</message>
         <message key="plugins.generic.jmef.manager.settings.diamondCategory">Diamond criteria</message>
         <message key="plugins.generic.jmef.manager.settings.additionalMetadata">Additional Journal Metadata</message>
@@ -39,6 +39,20 @@
         <message key='plugins.generic.jmef.manager.settings.oecdClassification'>OECD 2007 Classification</message>
         <message key='plugins.generic.jmef.manager.settings.oecdClassification.description'>Choose your journal's classification from the list.</message>
         <message key='plugins.generic.jmef.manager.settings.scholarlyJournal'>Check if your journal could be classified as Scholarly journal.</message>
-        <message key='plugins.generic.jmef.manager.settings.communityOwned'>Check if your journal is community owned.</message>
+        <message key='plugins.generic.jmef.manager.settings.communityOwned'><![CDATA[Check if your journal is community owned. <br /><em>(self-declaration text about ownership  defined by DDH will appear at the end of the <strong>About</strong> page.)</em>]]></message>
         <message key='plugins.generic.jmef.manager.settings.noFees'>Check if your journal has no APCs and any kind of subscriptions to it's content.</message>
+        
+       
+        <message key='plugins.generic.jmef.diamond.organisationType'>Choose the type of your institution/organisation:</message>
+        <message key='plugins.generic.jmef.diamond.organisationType.public'>public</message>
+        <message key='plugins.generic.jmef.diamond.organisationType.nonProfit'>not-for-profit</message>
+        
+        <message key='plugins.generic.jmeg.about.openToAllAuthors'>
+            <![CDATA[<h3>Open to all authors:</h3>
+            <p>{$contextTitle} is committed to openness and inclusivity in scholarly publishing without author-facing charges for reading or publishing. We welcome submissions from all authors, regardless of their institutional affiliation, geographical location, or academic status. Submissions only must align with the aims and scope of the journal and meet the required quality standards once the reviewing process is completed.</p>]]>
+        </message>
+        
+        <message key='plugins.generic.jmeg.about.communityOwned'>
+            <![CDATA[<h3>Community-owned:</h3><p>{$contextTitle} is owned by {$publisherInstitution}, a {$organisationType} institution/organisation dedicated to advancing research and scholarship. The journal’s ownership and governance structure reflect its mission to support open and accessible academic publishing. We confirm that any commercial service providers involved in our operations only deal with service-related aspects of journal publishing. All content-related aspects of publishing, such as submission, peer review, acceptance, publication frequency, and scope of the journal, are controlled by the editors / the owners of the journal.</p>]]>
+        </message>
 </locale>

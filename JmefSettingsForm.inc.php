@@ -37,7 +37,8 @@ class JmefSettingsForm extends Form {
         'noFees' => array('bool', false),
         'openAuthorship' => array('bool', false),
         'journalKeywords' => array('string', true),
-        'oecdClassification' => array('string', false)
+        'oecdClassification' => array('string', false),
+        'organisationType' => array('string', false)
     );
     
     var $_reviewTypes = array('peer' => 'peer');
