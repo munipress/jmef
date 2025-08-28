@@ -1,6 +1,6 @@
 #
 msgid ""
-msgstr "Language: en\n"
+msgstr "Language: en_US\n"
 
 msgid "plugins.generic.jmef.displayName" 
 msgstr "JMEF XML Generator"
@@ -46,7 +46,7 @@ msgid "plugins.generic.jmef.manager.settings.peerReviewUsed"
 msgstr "Check if you are using peer reviewe process."
 
 msgid "plugins.generic.jmef.manager.settings.openAuthorship" 
-msgstr "Check if you have open authorship."
+msgstr "Check if you have open authorship.<br /><em>(self-declaration text defined by DDH regarding openness to all authors will appear at the end of the <strong>About</strong> page.)</em>"
 
 msgid "plugins.generic.jmef.manager.settings.journalPolicy" 
 msgstr "Journal policy"
@@ -73,7 +73,7 @@ msgid "plugins.generic.jmef.manager.settings.scholarlyJournal"
 msgstr "Check if your journal could be classified as Scholarly journal."
 
 msgid "plugins.generic.jmef.manager.settings.communityOwned"
-msgstr "Check if your journal is community owned."
+msgstr "Check if your journal is community owned.<br /><em>(self-declaration text about ownership  defined by DDH will appear at the end of the <strong>About</strong> page.)</em> "
 
 msgid "plugins.generic.jmef.manager.settings.noFees"
 msgstr "Check if your journal has no APCs and any kind of subscriptions to it's content."
@@ -83,3 +83,19 @@ msgstr "Review type"
 
 msgid "plugins.generic.jmef.manager.settings.reviewType.description"
 msgstr "Choose type of your review process from the list"
+
+msgid "plugins.generic.jmef.diamond.organisationType"
+msgstr "Choose the type of your institution/organisation:"
+
+msgid "plugins.generic.jmef.diamond.organisationType.public"
+msgstr "public"
+
+msgid "plugins.generic.jmef.diamond.organisationType.nonProfit"
+msgstr "not-for-profit"
+
+msgid "plugins.generic.jmeg.about.openToAllAuthors"
+msgstr "<h3>Open to all authors:</h3><p>{$contextTitle} is committed to openness and inclusivity in scholarly publishing without author-facing charges for reading or publishing. We welcome submissions from all authors, regardless of their institutional affiliation, geographical location, or academic status. Submissions only must align with the aims and scope of the journal and meet the required quality standards once the reviewing process is completed.</p>"
+
+msgid "plugins.generic.jmeg.about.communityOwned"
+msgstr "<h3>Community-owned:</h3><p>{$contextTitle} is owned by {$publisherInstitution}, a {$organisationType} institution/organisation dedicated to advancing research and scholarship. The journal’s ownership and governance structure reflect its mission to support open and accessible academic publishing. We confirm that any commercial service providers involved in our operations only deal with service-related aspects of journal publishing. All content-related aspects of publishing, such as submission, peer review, acceptance, publication frequency, and scope of the journal, are controlled by the editors / the owners of the journal.</p>"
+

@@ -22,6 +22,10 @@ use PKP\linkAction\request\AjaxModal;
 use PKP\plugins\GenericPlugin;
 use PKP\plugins\Hook;
 use APP\plugins\generic\jmef\JmejSettingsForm;
+use PKP\core\Registry;
+use PKP\db\DAORegistry;
+use PKP\plugins\PluginRegistry;
+use PKP\facades\Locale;
 
 class JmefPlugin extends GenericPlugin {
 
@@ -38,6 +42,7 @@ class JmefPlugin extends GenericPlugin {
         'openAuthorship' => array('boolean', false),
         'journalKeywords' => array('string', true),
         'oecdClassification' => array('string', false),
+        'organisationType' => array('string', false)
     );
     
     /**
@@ -52,6 +57,9 @@ class JmefPlugin extends GenericPlugin {
             // Intercept the LoadHandler hook to present
             // jmef when requested.
             Hook::add('LoadHandler', array($this, 'callbackHandleContent'));
+            
+            //adds the diamond text on the about page
+            Hook::add('TemplateManager::display', array($this, 'addDiamondTexts'));
         }
         return $success;
     }
@@ -137,7 +145,48 @@ class JmefPlugin extends GenericPlugin {
                 parent::getActions($request, $verb)
         );
     }
+    
+    public function addDiamondTexts($hookName, $args) {
+        $templateMgr = $args[0];
+        $template = $args[1];
 
+        $request = Application::get()->getRequest();
+        $context = $request->getContext();
+        $contextId = $context->getId();
+
+        if ($template !== "frontend/pages/about.tpl") return false;
+
+        // Get "about" page content
+        $currentContext = $templateMgr->getTemplateVars('currentContext');
+        $currentLocale = Locale::getLocale();
+        
+        if ($currentContext) {
+            $aboutText = $currentContext->getLocalizedSetting('about');
+
+            // Add own text to about context part
+            
+            if ((bool) $context->getData('openAuthorship')){
+                $aboutText .= __('plugins.generic.jmeg.about.openToAllAuthors', array('contextTitle' => $currentContext->getLocalizedData('name')));
+            }           
+            if ((bool) $context->getData('communityOwned')){
+                if($context->getData('organisationType')=="nonprofit"){
+                    $organisationType = __('plugins.generic.jmef.diamond.organisationType.nonProfit');
+                } else {
+                    $organisationType = __('plugins.generic.jmef.diamond.organisationType.public');
+                }
+                $aboutText .= __('plugins.generic.jmeg.about.communityOwned', array('contextTitle' => $currentContext->getLocalizedData('name'), 'publisherInstitution' => $currentContext->getData('publisherInstitution'), 'organisationType' => $organisationType));
+            }
+            // Content update inside object
+            $currentContext->setData('about', $aboutText, $currentLocale);
+        }
+
+        // Assign whole updated object to template
+        $templateMgr->assign(array(
+            'currentContext' => $currentContext,            
+        ));
+
+        return false;
+    }
     /**
      * @copydoc Plugin::manage()
      */
