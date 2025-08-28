@@ -43,6 +43,17 @@
                         {assign var="checked" value=false}
                 {/if}
                 {fbvElement type="checkbox" name="communityOwned" id="communityOwned" checked=$checked label="plugins.generic.jmef.manager.settings.communityOwned"}
+                 <br />
+                <strong>{translate key="plugins.generic.jmef.diamond.organisationType"}</strong>
+                {if $organisationType == "nonprofit"}
+                    {assign var=elementPublicChecked value=false}
+                    {assign var=elementNonProfitChecked value=true}
+                {else}
+                    {assign var=elementPublicChecked value=true}
+                    {assign var=elementNonProfitChecked value=false}
+                {/if}
+                {fbvElement type="radio" name="organisationType" id="organisationTypePublic" value="public" checked=$elementPublicChecked label="plugins.generic.jmef.diamond.organisationType.public"}
+                 {fbvElement type="radio" name="organisationType" id="organisationTypePublic" value="nonprofit" checked=$elementNonProfitChecked label="plugins.generic.jmef.diamond.organisationType.nonProfit"}
             {/fbvFormSection}
     {/fbvFormArea}     
     {fbvFormArea id="jmefSettingsFormAreaOthers" title="plugins.generic.jmef.manager.settings.additionalMetadata"}
